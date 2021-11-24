@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/todolist.css">
+	<link rel="stylesheet" href="css/fontawesome-free-5.15.4-web/css/all.css">
+	<title>TodoList</title>
+</head>
+<body>
+	<div class="wrapper">
+		<h4 class="Title" >ToDoList</h4>
+		<div class="inputField">
+			<input class="inputField__text" type="text" placeholder="Type something">
+			<div class="inputField__Add">Add</div>
+		</div>
+		<div class="moreItem">
+			<div  class="moreItem__done">
+				<div id="btnDone" style="margin-right: 6px;">Done</div>
+				<div id="numDone" >0</div>
+			</div>
+			<div  class="moreItem__pending">
+				<div id="btnPending" style="margin-right: 6px;">Pending</div>
+				<div id="numPending">0</div>
+			</div>
+			<div  class="moreItem__clear">
+				<div id="btnClear" style="margin-right: 6px;">Clear</div>
+			</div>
+		</div>
+		<ul class="todoList">
+		</ul>
+		<div class="edit hidden" > 
+			<input class="edit__input" type="text" placeholder="type something"">
+			<div class="edit__okaybtn" >OK</div>
+		</div>
+	</div>
+</body>
+<script  src="index.js" ></script>
+</html>
