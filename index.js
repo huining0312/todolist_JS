@@ -40,6 +40,12 @@ if (inputTodo.value !== ""){
 }
 document.querySelector('.wrapper').addEventListener('click',(event)=>{
     console.log(event.target)
+<<<<<<< HEAD
+=======
+    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+    console.log(checkboxes.length)
+    // console.log(document.querySelector('.todoList').childNodes.length-1)
+>>>>>>> ec8825f6c71e7fda2a6039fc850fa813d4bdefa7
     if(event.target.parentNode.classList.contains("todoList__delete")){
         // event.target
         event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
@@ -69,6 +75,7 @@ document.querySelector('.wrapper').addEventListener('click',(event)=>{
         clearBtn += 1;
         // todoList.appendChild("")
     }
+    
     if(event.target.parentNode.classList.contains("todoList__edit")|event.target.classList.contains("todoList__edit")){
         console.log(event.target.parentNode.parentNode)
         const editScreen = document.querySelector('.edit');
@@ -103,7 +110,7 @@ document.querySelector('.wrapper').addEventListener('click',(event)=>{
         })
     }
         
-    
+    innerDone.innerHTML = checkboxes.length;
 })
 
 addbtn.addEventListener('click', showTodo)
