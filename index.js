@@ -5,8 +5,10 @@ const innerPending = document.querySelector('#numPending');
 const innerDone = document.querySelector('#numDone');
 let penNum = 0;
 let doneNum = 0;
+let clearBtn = 0;
 const showTodo = ()=>{
-console.log(inputTodo.value)
+    console.log("click")
+
 if (inputTodo.value !== ""){
     let html = `
     <div class="todoList__checkbox">
@@ -23,16 +25,21 @@ if (inputTodo.value !== ""){
     newTodoitem.innerHTML = html;
     todoList.appendChild(newTodoitem);
     inputTodo.value = ""
-    penNum = document.querySelector('.todoList').childNodes.length-1;
-    innerPending.innerHTML = penNum;
+    if(clearBtn>0){
+        penNum = document.querySelector('.todoList').childNodes.length;
+        innerPending.innerHTML = penNum;
+    }else{
+        penNum = document.querySelector('.todoList').childNodes.length-1;
+        innerPending.innerHTML = penNum;
+    }
+    
 }else{
     console.log('error')
 }
     
 }
 document.querySelector('.wrapper').addEventListener('click',(event)=>{
-    // console.log(event.target)
-    // console.log(document.querySelector('.todoList').childNodes.length-1)
+    console.log(event.target)
     if(event.target.parentNode.classList.contains("todoList__delete")){
         // event.target
         event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
@@ -44,12 +51,23 @@ document.querySelector('.wrapper').addEventListener('click',(event)=>{
         penNum -= 1;
         innerPending.innerHTML = penNum;
     }
+    if(event.target.parentNode.classList.contains("todoList__checkbox")){
+        event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
+        penNum -= 1;
+        doneNum += 1;
+        innerPending.innerHTML = penNum;
+        innerDone.innerHTML = doneNum;
+    }
     if(event.target.parentNode.classList.contains("moreItem__clear")){
-        const targetNode = document.querySelector('.todoList');
-        // console.log(targetNode)
-        targetNode.innerHTML = "";
+
+        while (todoList.lastChild){
+            todoList.removeChild(todoList.lastChild)
+        }
+        
         penNum = 0;
         innerPending.innerHTML = penNum;
+        clearBtn += 1;
+        // todoList.appendChild("")
     }
     if(event.target.parentNode.classList.contains("todoList__edit")|event.target.classList.contains("todoList__edit")){
         console.log(event.target.parentNode.parentNode)
